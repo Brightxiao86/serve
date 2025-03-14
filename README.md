@@ -17,13 +17,13 @@
 
 ```bash
    node index.js
-   然后访问 [http://localhost:3000](http://localhost:3000)
+   然后访问 [http://localhost:3000]
 ```
 
 3.**启动服务**
 
 ```bash
- 可以参照  db文件夹中initDB文件 去初始化表如果有表就不创建 否则就创建
+ 可以参照  db文件夹中initialization文件 去初始化表如果有表就不创建 否则就创建
 ```
 
 ## 📁 项目结构
