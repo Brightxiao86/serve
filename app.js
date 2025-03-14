@@ -6,16 +6,20 @@ var logger = require('morgan');
 const cors = require('cors')
 const { expressjwt } = require("express-jwt");
 const {PRIVATE_KEY} = require('./utils/constant')
+const initialization= require('./db/initialization')
 
 var articleRouter = require('./routes/article');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+// 初始化数据库 创建表
+initialization();
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());

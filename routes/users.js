@@ -10,13 +10,16 @@ const jwt = require('jsonwebtoken')
 router.post('/register', async(req, res, next) => {
   let {username,password,nickname} = req.body
   try {
+       // 检查用户名是否已存在
     let user = await querySql('select * from user where username = ?',[username])
+     // 如果用户名不存在
     if(!user || user.length === 0){
-      password = md5(`${password}${PWD_SALT}`)
+      password = md5(`${password}${PWD_SALT}`)  // 对密码进行加密处理
+        // 将新用户数据插入数据
       await querySql('insert into user(username,password,nickname) value(?,?,?)',[username,password,nickname])
       res.send({code:0,msg:'注册成功'})
     }else{
-      res.send({code:-1,msg:'该账号已注册'})
+      res.send({code:-1,msg:'该账号已注册'}) // 如果用户名已存在，返回注册失败响应
     }
   }catch(e){
     console.log(e)
