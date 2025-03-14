@@ -16,7 +16,7 @@
 2.**启动服务**
 
 ```bash
-   node index.js
+   npm start
    然后访问 [http://localhost:3000]
 ```
 
